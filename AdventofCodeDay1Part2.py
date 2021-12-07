@@ -10,7 +10,7 @@ for x in range(2, len(depths)):
 # counts the number of times the sum of measurements in this sliding window increases
 number_of_increases = 0
 for x in range(len(depths_three_sum) - 1):
-    if depths_three_sum[x] > depths_three_sum[x-1]:
+    if depths_three_sum[x+1] > depths_three_sum[x]:
         number_of_increases += 1
 print(number_of_increases)
 
