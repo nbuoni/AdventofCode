@@ -16,9 +16,12 @@ submarine_movement$magnitude <- as.integer(submarine_movement$magnitude)
 horizontal_position = 0
 vertical_position = 0
 
-#loops through submarine_movement to determine final horizontal and vertical position given that
-#'forward X' increases horizontal position by X units, 'down X' increases the depth by X units, and
-#'up X' decreases the depth by X units
+"""
+loops through submarine_movement to determine final horizontal and vertical position given that 
+'forward X' increases horizontal position by X units, 'down X' increases the depth by X units, and
+'up X' decreases the depth by X units
+
+"""
 
 for (cell in 1:1000) {
   if (submarine_movement$direction[cell] == "forward") {
