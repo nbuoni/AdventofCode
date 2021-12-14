@@ -3,7 +3,7 @@
 import pandas as pd
 
 # import submarine diagnostic report as pandas dataframe with one digit of bit per cell
-submarine_bits = pd.read_csv(r'/Users/ninabuoni/Documents/AdventofCode/Advent of Code Day 3 Data.csv',
+submarine_bits = pd.read_csv(r'/Users/ninabuoni/Documents/AdventofCode/AdventofCodeDay3Data.csv',
                              header = None,
                              index_col = False)
 
