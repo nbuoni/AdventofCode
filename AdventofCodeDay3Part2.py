@@ -1,7 +1,6 @@
 # import packages
 
 import pandas as pd
-import math
 
 # import submarine diagnostic report as pandas dataframe with one digit of bit per cell
 submarine_bits = pd.read_csv(r'/Users/ninabuoni/Documents/AdventofCode/AdventofCodeDay3Data.csv',
@@ -10,8 +9,8 @@ submarine_bits = pd.read_csv(r'/Users/ninabuoni/Documents/AdventofCode/AdventofC
 
 # define function to obtain most common column value of data frame containing bits given data frame and column index
 def get_most_common_value(df, column_index):
-    ratio = submarine_bits[column_index].sum()/len(submarine_bits)
-    if ratio >= 0.5:
+    ratio = df[column_index].sum()/len(df)
+    if ratio >= 0.5000:
         most_common_value = 1
     else:
         most_common_value = 0
@@ -19,8 +18,8 @@ def get_most_common_value(df, column_index):
 
 # define function to obtain least common column value of data frame containing bits given data frame and column index
 def get_least_common_value(df, column_index):
-    ratio = submarine_bits[column_index].sum()/len(submarine_bits)
-    if ratio >= 0.5:
+    ratio = df[column_index].sum()/len(submarine_bits)
+    if ratio >= 0.5000:
         least_common_value = 0
     else:
         least_common_value = 1
@@ -34,8 +33,8 @@ CO2_scrubber_rating = submarine_bits.copy()
 for column_index in range(len(oxygen_generator_rating.columns)):
     if len(oxygen_generator_rating) == 1:
         break
-    value = get_least_common_value(oxygen_generator_rating, column_index)
-    oxygen_generator_rating.drop(oxygen_generator_rating[oxygen_generator_rating[column_index] == value].index,
+    value = get_most_common_value(oxygen_generator_rating, column_index)
+    oxygen_generator_rating.drop(oxygen_generator_rating[oxygen_generator_rating[column_index] != value].index,
     inplace = True)
 
 for column_index in range(len(CO2_scrubber_rating.columns)):
