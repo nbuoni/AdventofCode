@@ -25,7 +25,13 @@ def get_least_common_value(df, column_index):
         least_common_value = 1
     return least_common_value
 
-"""  """
+""" To find the oxygen generator rating determine the most common value in the current
+bit position starting with the first bit and continuining with subsequent bits.
+Keep only numbers with that bit in the corresponding position. To find the CO2
+scrubber rating, determine the least common value in the current bit position
+starting with the first bit and continuining with subsequent bits. Keep only
+numbers with that bit in the corresponding position. The process ends when only
+one number remains. The remaining number is the desired rating. """
 
 oxygen_generator_rating = submarine_bits.copy()
 CO2_scrubber_rating = submarine_bits.copy()
@@ -44,16 +50,19 @@ for column_index in range(len(CO2_scrubber_rating.columns)):
     CO2_scrubber_rating.drop(CO2_scrubber_rating[CO2_scrubber_rating[column_index] == value].index,
     inplace = True)
 
-
+# construct oxygen generator rating and CO2 scrubber rating
 oxygen_generator_rating = "".join([str(oxygen_generator_rating.iloc[0, i])
 for i in range(len(oxygen_generator_rating.columns))])
 
 CO2_scrubber_rating = "".join([str(CO2_scrubber_rating.iloc[0, i])
 for i in range(len(CO2_scrubber_rating.columns))])
 
+# print oxygen generator rating and CO2 scrubber rating
 print(f"oxygen generator rating= {oxygen_generator_rating}")
 print(f"CO2 scrubber rating= {CO2_scrubber_rating}")
 
+# calculate life support rating in decimal format
 life_support_rating = int(oxygen_generator_rating, 2)*int(CO2_scrubber_rating, 2)
 
+# print life support rating
 print(f"life support rating = {life_support_rating}")
